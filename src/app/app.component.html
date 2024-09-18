@@ -1,0 +1,17 @@
+<app-header/>
+<main>
+  <ul id ="users">
+  <!-- avaiable only on angular >= 17 -->
+    <!--@for (user of users; track user.id) { -->
+      <li *ngFor="let user of users">
+        <app-user [user]="user" (select)="onSelectUser($event)" [isSelected]="user.id === selectedUser?.id"/>
+      </li>  
+    <!--}-->
+  </ul>
+  @if (selectedUser){
+    <app-tasks [nameUser]="selectedUser.name" [id]="selectedUser.id"></app-tasks>
+  } 
+  @else {
+    <p> Task User </p>
+  }  
+</main>
